@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "342054297610",
+    "project_id": "skillmesh-66c79",
+    "storage_bucket": "skillmesh-66c79.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342054297610:android:fe8ea40f4d39f0228dfff3",
+        "android_client_info": {
+          "package_name": "com.pccoer.skillmesh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh3oTIMZWnMlgNG2kl_4mTTvali0vSwQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
