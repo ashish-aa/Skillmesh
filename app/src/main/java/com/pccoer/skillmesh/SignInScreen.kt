@@ -28,6 +28,7 @@ import com.pccoer.skillmesh.viewmodel.AuthViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.google.firebase.firestore.ktx.firestore
+import com.pccoer.skillmesh.viewmodel.checkUserProfileAndNavigate
 
 @Composable
 fun SignInScreen(
@@ -129,28 +130,3 @@ fun SignInScreen(
     }
 }
 
-fun checkUserProfileAndNavigate(
-    context: Context,
-    navController: NavController,
-    onSignInSuccess: () -> Unit
-) {
-    val userId = Firebase.auth.currentUser?.uid
-    if (userId != null) {
-        Firebase.firestore.collection("users").document(userId).get()
-            .addOnSuccessListener { document ->
-                if (document.exists() && document.getBoolean("profileCompleted") == true) {
-                    // ✅ If profile exists, go to HomeScreen
-                    onSignInSuccess()
-                } else {
-                    // ❗ If profile is missing, navigate to CreateProfileScreen
-                    Toast.makeText(context, "Complete your profile", Toast.LENGTH_SHORT).show()
-                    navController.navigate("profile") {
-                        popUpTo("signIn") { inclusive = true }
-                    }
-                }
-            }
-            .addOnFailureListener {
-                Toast.makeText(context, "Failed to check profile", Toast.LENGTH_SHORT).show()
-            }
-    }
-}
